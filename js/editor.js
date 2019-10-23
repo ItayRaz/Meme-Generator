@@ -38,6 +38,12 @@ function renderCanvas() {
     })
 }
 
+function onChanginTxt(elInput) {
+    changeMemeTxt(elInput.value);
+    renderCanvas();
+}
+
+
 function onChangeFontSize(elInput) {
     changeMemeFontSize(elInput.value)
     renderCanvas();

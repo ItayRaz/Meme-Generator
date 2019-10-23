@@ -1,11 +1,9 @@
 'use strict'
 
-let gTxtStartPos = 0;
+let gCurrTxt = 0;
+let gNextId = 0;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
-var gImgs = [
-    { id: 1, url: './meme-imgs/20.jpg', keywords: ['happy'] },
-    { id: 2, url: './meme-imgs/8.jpg', keywords: ['happy'] },
-];
+var gImgs = createImgs();
 var gMeme = {
     selectedImgId: 1,
     selectedTxtIdx: 0,
@@ -13,28 +11,36 @@ var gMeme = {
         {
             line: '',
             size: 50,
-            align: 'left',
+            align: 'center',
             color: 'white',
-            posX: 30,
+            posX: 200,
             posY: 60
         },
         {
             line: '',
             size: 50,
-            align: 'left',
+            align: 'center',
             color: 'white',
-            posX: 30,
+            posX: 200,
             posY: 400
         },
         {
             line: '',
             size: 50,
-            align: 'left',
+            align: 'center',
             color: 'white',
-            posX: 30,
+            posX: 200,
             posY: 225
         },
     ]
+}
+
+function createImgs() {
+    let imgs = []
+    for (var i = 1; i < 26; i++){
+        imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keywords: ['happy'] })
+    }
+    return gImgs = imgs;
 }
 
 function getImgs() {
@@ -46,11 +52,11 @@ function getMeme() {
 }
 
 function changeMemeTxt(txt) {
-    gMeme.txts[gTxtStartPos].line = txt;
+    gMeme.txts[gCurrTxt].line = txt;
 }
 
 function changeMemeFontSize(size) {
-    gMeme.txts[gTxtStartPos].size = size;
+    gMeme.txts[gCurrTxt].size = size;
 }
 
 function findImg(id) {
@@ -61,7 +67,7 @@ function findImg(id) {
 }
 
 function getTxtStartPos() {
-    return gTxtStartPos;
+    return gCurrTxt;
 }
 
 function changeMemeImg(id) {
@@ -69,16 +75,16 @@ function changeMemeImg(id) {
 }
 
 function changeTxtPosX(txt) {
-    txt === '+' ? gMeme.txts[gTxtStartPos].posX += 8 : gMeme.txts[gTxtStartPos].posX -= 8;
+    txt === '+' ? gMeme.txts[gCurrTxt].posX += 8 : gMeme.txts[gCurrTxt].posX -= 8;
 }
 
 function changeTxtPosY(txt) {
-    txt === '+' ? gMeme.txts[gTxtStartPos].posY -= 8 : gMeme.txts[gTxtStartPos].posY += 8;
+    txt === '+' ? gMeme.txts[gCurrTxt].posY -= 8 : gMeme.txts[gCurrTxt].posY += 8;
 }
 
 function changeStartPos(btn) {
-    gTxtStartPos++;
-    switch (gTxtStartPos) {
+    gCurrTxt++;
+    switch (gCurrTxt) {
         case 1:
             btn.innerText = 'Bottom'
             
@@ -90,7 +96,7 @@ function changeStartPos(btn) {
             break;
         case 3:
             btn.innerText = 'Top'
-            gTxtStartPos = 0
+            gCurrTxt = 0
             break;
     
         default:

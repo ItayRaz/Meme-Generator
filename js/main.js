@@ -13,12 +13,6 @@ function renderImgs() {
     elImgContainer.innerHTML = imgHTML.join('');
 }
 
-
-function onChanginTxt(elInput) {
-    changeMemeTxt(elInput.value);
-    renderCanvas();
-}
-
 function changeCurrImg(id) {
     changeMemeImg(id);
     saveToStorage('meme', getMeme());

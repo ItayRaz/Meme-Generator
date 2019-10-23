@@ -9,7 +9,7 @@
     <title>Meme Gen</title>
 </head>
 
-<body onload="init ()">
+<body onload="initEditor()">
 
     <div class="canvas-container">
         <canvas id="my-canvas">
@@ -17,12 +17,12 @@
         </canvas>
     </div>
     <input type="text" onkeyup="onChanginTxt(this)">
-
-    <div class="image-container"></div>
+    <div class="image" style="display: none;"></div>
 
 
     <script src="js/util.js"></script>
     <script src="js/meme-service.js"></script>
+    <script src="js/editor.js"></script>
     <script src="js/main.js"></script>
 </body>
 

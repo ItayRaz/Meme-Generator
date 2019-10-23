@@ -2,8 +2,8 @@
 
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 var gImgs = [
-    { id: 1, url: '../meme-imgs/meme1.jpg', keywords: ['happy'] },
-    { id: 2, url: '../meme-imgs/9.jpg', keywords: ['happy'] },
+    { id: 1, url: './meme-imgs/meme1.jpg', keywords: ['happy'] },
+    { id: 2, url: './meme-imgs/9.jpg', keywords: ['happy'] },
 ];
 var gMeme = {
     selectedImgId: 1,

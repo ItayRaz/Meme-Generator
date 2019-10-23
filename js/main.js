@@ -1,8 +1,5 @@
 'use strict'
 
-
-let gCurrImgId;
-
 function init() {
     renderImgs();
 }
@@ -23,7 +20,6 @@ function onChanginTxt(elInput) {
 }
 
 function changeCurrImg(id) {
-    gCurrImgId = id;
     changeMemeImg(id);
     saveToStorage('meme', getMeme());
     window.location.assign('./editor.html')

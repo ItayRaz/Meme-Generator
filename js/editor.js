@@ -17,7 +17,7 @@ function renderImg() {
     let meme = loadFromStorage('meme');
     let image = findImg(meme.selectedImgId);
     console.log(image);
-    
+
     let imgHTML =
         `<img id="image-${image.id}" src="${image.url}" width="420" height="420">`
     elImg.innerHTML = imgHTML;
@@ -25,13 +25,35 @@ function renderImg() {
 
 function renderCanvas() {
     let img = document.querySelector("img");
-// console.log(img);
-
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-    gCtx.fillStyle = getMeme().txts[0].color;
-    gCtx.strokeStyle = 'black';
-    gCtx.font = "50px Impact";
-    gCtx.fillText(getMeme().txts[0].line, 30, 60);
+    let memeTxt = getMeme().txts;
+    memeTxt.map(txt => {
+        gCtx.textAlign = txt.align;
+        gCtx.fillStyle = txt.color;
+        gCtx.strokeStyle = 'black';
+        gCtx.font = `${txt.size}px Impact`;
+        gCtx.fillText(txt.line, txt.posX, txt.posY);
+    })
+}
+
+function onChangeFontSize(elInput) {
+    changeMemeFontSize(elInput.value)
+    renderCanvas();
+}
+
+function onChangePosX(elBtn) {
+    changeTxtPosX(elBtn.innerHTML);
+    renderCanvas();
+}
+
+function onChangePosY(elBtn) {
+    changeTxtPosY(elBtn.innerHTML);
+    renderCanvas();
+}
+
+function onChangeStartPos(elBtn) {
+    changeStartPos(elBtn);
+    // renderCanvas();
 }

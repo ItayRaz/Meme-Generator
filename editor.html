@@ -16,8 +16,13 @@
             Update your browser to enjoy canvas!
         </canvas>
     </div>
-    <input type="text" onkeyup="onChanginTxt(this)">
+    Text Position <button onclick="onChangeStartPos(this)">Top</button>
+    Text<input type="text" onkeyup="onChanginTxt(this)">
+    Font Size<input type="number" value="50" onkeyup="onChangeFontSize(this)" onclick="onChangeFontSize(this)">
+    <button onmousedown="onChangePosY(this)">-</button> Vertical Pos <button onmousedown="onChangePosY(this)">+</button>
+    <button onclick="onChangePosX(this)">-</button> Horizontal Pos <button onclick="onChangePosX(this)">+</button>
     <div class="image" style="display: none;"></div>
+    
 
 
     <script src="js/util.js"></script>

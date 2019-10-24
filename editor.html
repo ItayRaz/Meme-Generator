@@ -11,18 +11,81 @@
 
 <body onload="initEditor()">
 
-    <div class="canvas-container">
-        <canvas id="my-canvas">
-            Update your browser to enjoy canvas!
-        </canvas>
-    </div>
-    Text Position <button onclick="onChangeStartPos(this)">Top</button>
-    Text<input type="text" onkeyup="onChanginTxt(this)">
-    Font Size<input type="number" value="50" onkeyup="onChangeFontSize(this)" onclick="onChangeFontSize(this)">
-    <button onmousedown="onChangePosY(this)">-</button> Vertical Pos <button onmousedown="onChangePosY(this)">+</button>
-    <button onclick="onChangePosX(this)">-</button> Horizontal Pos <button onclick="onChangePosX(this)">+</button>
+    <header>
+        <section class="container header-wrapper flex align-center">
+            <div class="logo flex-1">
+                <img src="./meme-imgs/LOGO.png" alt="">
+            </div>
+            <nav id="mainMenu" class="main-menu-wrapper">
+                <ul class="main-menu clean-list flex align-center">
+                    <li>
+                        <a href="./index.html" >Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#">Memes</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+                <!-- <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button> -->
+                <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+            </nav>
+
+        </section>
+    </header>
+
+    <main class="editor-container container flex">
+        <div class="canvas-container">
+            <canvas id="my-canvas">
+                Update your browser to enjoy canvas!
+            </canvas>
+        </div>
+        <div class="settings-container flex">
+            <p>
+                <input class="text-input" type="text" onkeyup="onChanginTxt(this)">
+            </p>
+            <div class="btns-container">
+                <button onclick="onChangeStartPos(this)"><img src="./ICONS/up-down.png" alt=""></button>
+                <button onclick="onTrash()"><img src="./ICONS/trash.png" alt=""></button>
+                <button onclick="onIncreaseFontSize()"><img src="./ICONS/increase font - icon.png" alt=""></button>
+                <button onclick="onDecreaseFontSize()"><img src="./ICONS/decrease font - icon.png" alt=""></button>
+                <button onmousedown="onChangePosY(this)"><img src="./ICONS/arrow-up.png" alt=""></button>
+                <button onmousedown="onChangePosY(this)"><img src="./ICONS/arrow-down.png" alt=""></button>
+                <!-- <button onclick="onChangePosX(this)"><img style="transform: rotate(90deg);" src="./ICONS/arrow-up.png"alt=""></button>
+                <button onclick="onChangePosX(this)"><img style="transform: rotate(270deg);" src="./ICONS/arrow-up.png"alt=""></button> -->
+                <button onclick="onAlignLeft()"><img src="./ICONS/align-to-left.png" alt=""></button>
+                <button onclick="onAlignCenter()"><img src="./ICONS/center-text-alignment.png" alt=""></button>
+                <button onclick="onAlignRight()"><img src="./ICONS/align-to-right.png" alt=""></button>
+                <select class="font-select" onchange="onChangeFont(this.value)">
+                        <option value="Impact">Impact</option>
+                        <option value="Ariel">Ariel</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Lucida Console">Lucida Console</option>
+                    </select>
+                    <label for="stroke"><img src="./ICONS/text stroke.png" alt=""></label>
+                    <input type="color" id="stroke" oninput="onChangeStroke(this.value)" style="display: none;">
+                    <label for="fill"><img src="./ICONS/fill-color.png" alt=""></label>
+                    <input type="color" id="fill" oninput="onChangeFill(this.value)" style="display: none;">
+            </div>
+        </div>
+    </main>
     <div class="image" style="display: none;"></div>
-    
+
+    <footer>
+
+        <section class="container">
+            <div class="logo">
+                <img src="./meme-imgs/LOGO.png" alt="">
+            </div>
+            <small>© All Rights Reserved 2019</small>
+            <div class="icons flex">
+                <i class="fab fa-facebook-f flex align-center"></i>
+                <i class="fab fa-twitter-square flex align-center"></i>
+                <i class="fab fa-behance-square flex align-center"></i>
+            </div>
+        </section>
+    </footer>
 
 
     <script src="js/util.js"></script>

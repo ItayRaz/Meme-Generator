@@ -16,15 +16,13 @@ function renderImg() {
     let elImg = document.querySelector('.image');
     let meme = loadFromStorage('meme');
     let image = findImg(meme.selectedImgId);
-    console.log(image);
-
     let imgHTML =
-        `<img id="image-${image.id}" src="${image.url}" width="420" height="420">`
+        `<img id="image-${image.id}" class="canvas-img " src="${image.url}" width="420" height="420">`
     elImg.innerHTML = imgHTML;
 }
 
 function renderCanvas() {
-    let img = document.querySelector("img");
+    let img = document.querySelector(".canvas-img");    
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -32,9 +30,11 @@ function renderCanvas() {
     memeTxt.map(txt => {
         gCtx.textAlign = txt.align;
         gCtx.fillStyle = txt.color;
-        gCtx.strokeStyle = 'black';
-        gCtx.font = `${txt.size}px Impact`;
+        gCtx.strokeStyle = txt.stroke;
+        gCtx.lineWidth= 2;
+        gCtx.font = `${txt.size}px ${txt.font}`;
         gCtx.fillText(txt.line, txt.posX, txt.posY);
+        gCtx.strokeText(txt.line, txt.posX, txt.posY)
     })
 }
 
@@ -44,22 +44,63 @@ function onChanginTxt(elInput) {
 }
 
 
-function onChangeFontSize(elInput) {
-    changeMemeFontSize(elInput.value)
+function onIncreaseFontSize() {
+    increaseFontSize()
+    renderCanvas();
+}
+
+function onDecreaseFontSize() {
+    decreaseFontSize()
     renderCanvas();
 }
 
 function onChangePosX(elBtn) {
     changeTxtPosX(elBtn.innerHTML);
+    console.log(elBtn.innerHTML);
+    
     renderCanvas();
 }
 
 function onChangePosY(elBtn) {
-    changeTxtPosY(elBtn.innerHTML);
+    changeTxtPosY(elBtn.innerHTML);    
     renderCanvas();
 }
 
 function onChangeStartPos(elBtn) {
     changeStartPos(elBtn);
-    // renderCanvas();
+}
+
+function onChangeStroke(color) {    
+    changeTxtStroke(color);
+    renderCanvas();
+}
+
+function onChangeFill(color) {    
+    changeTxtFill(color);
+    renderCanvas();
+}
+
+function onTrash() {
+    removeLine();
+    renderCanvas();
+}
+
+function onAlignLeft() {
+    alignLeft()
+    renderCanvas();
+}
+
+function onAlignCenter () {
+    alignCenter();
+    renderCanvas();
+}
+
+function onAlignRight () {
+    alignRight();
+    renderCanvas();
+}
+
+function onChangeFont(elFont) {
+    changeTxtFont(elFont);
+    renderCanvas();
 }

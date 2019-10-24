@@ -12,3 +12,17 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  function drawRect(x, y) {
+    gCtx.rect(x, y, 400, 80)
+    // gCtx.fillStyle = 'orange'
+    // gCtx.fillRect(x, y, 150, 150)
+    gCtx.strokeStyle = 'red'
+    gCtx.stroke()
+}
+
+function deleteRect(x, y) {
+    gCtx.rect(x, y, 400, 50)
+    gCtx.clearRect(x, y, 150, 150);
+    // gCtx.stroke()
+}

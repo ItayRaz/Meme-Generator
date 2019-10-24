@@ -11,24 +11,30 @@ var gMeme = {
         {
             line: '',
             size: 50,
+            font: 'Impact',
             align: 'center',
             color: 'white',
+            stroke: 'black',
             posX: 200,
             posY: 60
         },
         {
             line: '',
             size: 50,
+            font: 'Impact',
             align: 'center',
             color: 'white',
+            stroke: 'black',
             posX: 200,
             posY: 400
         },
         {
             line: '',
             size: 50,
+            font: 'Impact',
             align: 'center',
             color: 'white',
+            stroke: 'black',
             posX: 200,
             posY: 225
         },
@@ -37,7 +43,7 @@ var gMeme = {
 
 function createImgs() {
     let imgs = []
-    for (var i = 1; i < 26; i++){
+    for (var i = 1; i < 25; i++) {
         imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keywords: ['happy'] })
     }
     return gImgs = imgs;
@@ -55,8 +61,12 @@ function changeMemeTxt(txt) {
     gMeme.txts[gCurrTxt].line = txt;
 }
 
-function changeMemeFontSize(size) {
-    gMeme.txts[gCurrTxt].size = size;
+function increaseFontSize() {
+    gMeme.txts[gCurrTxt].size += 2;
+}
+
+function decreaseFontSize() {
+    gMeme.txts[gCurrTxt].size -= 2;
 }
 
 function findImg(id) {
@@ -75,31 +85,75 @@ function changeMemeImg(id) {
 }
 
 function changeTxtPosX(txt) {
-    txt === '+' ? gMeme.txts[gCurrTxt].posX += 8 : gMeme.txts[gCurrTxt].posX -= 8;
+    txt === `<img style="transform: rotate(90deg);" src="./ICONS/arrow-up.png" alt="">`
+        ? gMeme.txts[gCurrTxt].posX += 8 : gMeme.txts[gCurrTxt].posX -= 8;
 }
 
 function changeTxtPosY(txt) {
-    txt === '+' ? gMeme.txts[gCurrTxt].posY -= 8 : gMeme.txts[gCurrTxt].posY += 8;
+    txt === '<img src="./ICONS/arrow-down.png" alt="">' ?
+        gMeme.txts[gCurrTxt].posY += 8 : gMeme.txts[gCurrTxt].posY -= 8;
 }
 
 function changeStartPos(btn) {
     gCurrTxt++;
+    let timeOut;
     switch (gCurrTxt) {
         case 1:
-            btn.innerText = 'Bottom'
-            
+            clearTimeout(timeOut);
+            renderCanvas()
+            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            timeOut = setTimeout(() => {
+                renderCanvas()
+            }, 3000);
             break;
-
         case 2:
-            btn.innerText = 'Middle'
-            
+            clearTimeout(timeOut);
+            renderCanvas()
+            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            timeOut = setTimeout(() => {
+                renderCanvas()
+            }, 3000);
             break;
         case 3:
-            btn.innerText = 'Top'
             gCurrTxt = 0
+            clearTimeout(timeOut);
+            renderCanvas()
+            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            timeOut = setTimeout(() => {
+                renderCanvas()
+            }, 3000);
             break;
-    
+
         default:
             break;
     }
+}
+
+function changeTxtStroke(color) {
+    gMeme.txts[gCurrTxt].stroke = color;
+}
+
+function changeTxtFill(color) {
+    gMeme.txts[gCurrTxt].color = color;
+}
+
+function removeLine() {
+    gMeme.txts[gCurrTxt].line = ''
+}
+
+function alignLeft() {
+    gMeme.txts[gCurrTxt].align = 'left'
+    gMeme.txts[gCurrTxt].posX = 10;
+}
+function alignCenter() {
+    gMeme.txts[gCurrTxt].align = 'center'
+    gMeme.txts[gCurrTxt].posX = 200;
+}
+function alignRight() {
+    gMeme.txts[gCurrTxt].align = 'right'
+    gMeme.txts[gCurrTxt].posX = 400;
+}
+
+function changeTxtFont(font) {
+    gMeme.txts[gCurrTxt].font = font;
 }

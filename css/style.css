@@ -4,8 +4,8 @@
 
 body {
     margin: auto;
-    /* height: 100% */
     background-color: #e3e3e3;
+    font-family: 'Montserrat', sans-serif;
 }
 
 button {
@@ -21,6 +21,11 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Header */
@@ -152,6 +157,29 @@ header .header-wrapper {
 [src*="./ICONS"]:focus {
     outline:0;
     border-color: #ff7f00;
+}
+
+.sharing {
+    margin-top: 20px;
+    justify-content: space-around;
+}
+
+.sharing button, .sharing a {
+    width: 45%;
+    height: 60px;
+    border-radius: 12px;
+    background-color: gray;
+    color: white;
+    padding: 20px;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sharing button:hover, .sharing a:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /* Footer */

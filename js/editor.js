@@ -104,3 +104,9 @@ function onChangeFont(elFont) {
     changeTxtFont(elFont);
     renderCanvas();
 }
+
+function onDownload(elLink) {
+    var canvas = document.querySelector("#my-canvas");
+    var img    = canvas.toDataURL("image/png");
+    elLink.href = `${img}`
+}

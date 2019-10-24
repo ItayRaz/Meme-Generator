@@ -93,6 +93,10 @@ header .header-wrapper {
     border-bottom: 4px solid #040a2c;
 }
 
+.hamburger {
+    display: none;
+}
+
 /* Editor */
 
 .editor-container {
@@ -220,4 +224,49 @@ i {
 
  .flex-1 {
     flex: 1; 
+  }
+
+  .hide {
+      transform: scale(0);
+  }
+
+  @media(max-width: 1290px) {
+    .container {
+        /* margin-left: 10px; */
+    }
+  }
+
+  @media(max-width: 620px) {
+    .main-menu {
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 50px;
+        background-color: #ff7f00;
+        opacity: 0.8;
+        transition: 0.3s;
+      }
+    .hamburger {
+        color: white;
+        display: block;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        font-size: 22px;
+    }
+    .main-menu a {
+        color: black;
+    }
+
+    .container {
+        width: 88%;
+    }
+
+    .text-input {
+        width: 329px;
+    }
+
+    canvas {
+        width: 98%;
+    }
   }

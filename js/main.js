@@ -18,3 +18,12 @@ function changeCurrImg(id) {
     saveToStorage('meme', getMeme());
     window.location.assign('./editor.html')
 }
+
+function onHamburger() {
+    console.log('hello');
+    
+    let elMainMenu = document.querySelector('.main-menu');
+    console.log(elMainMenu);
+    
+    elMainMenu.classList.toggle('hide');
+}

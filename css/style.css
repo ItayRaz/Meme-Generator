@@ -33,6 +33,7 @@ a{
 ul {
     list-style-type: none;
     justify-content: space-between;
+    padding: 0;
 }
 
 header {
@@ -290,6 +291,7 @@ i {
     }
     .main-menu a {
         color: black;
+        font-weight: bold;
     }
 
     .image-container {

@@ -22,7 +22,7 @@ function renderImg() {
 }
 
 function renderCanvas() {
-    let img = document.querySelector(".canvas-img");    
+    let img = document.querySelector(".canvas-img");
     gCanvas.width = img.width;
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -31,7 +31,7 @@ function renderCanvas() {
         gCtx.textAlign = txt.align;
         gCtx.fillStyle = txt.color;
         gCtx.strokeStyle = txt.stroke;
-        gCtx.lineWidth= 2;
+        gCtx.lineWidth = 2;
         gCtx.font = `${txt.size}px ${txt.font}`;
         gCtx.fillText(txt.line, txt.posX, txt.posY);
         gCtx.strokeText(txt.line, txt.posX, txt.posY)
@@ -56,13 +56,11 @@ function onDecreaseFontSize() {
 
 function onChangePosX(elBtn) {
     changeTxtPosX(elBtn.innerHTML);
-    console.log(elBtn.innerHTML);
-    
     renderCanvas();
 }
 
 function onChangePosY(elBtn) {
-    changeTxtPosY(elBtn.innerHTML);    
+    changeTxtPosY(elBtn.innerHTML);
     renderCanvas();
 }
 
@@ -70,12 +68,12 @@ function onChangeStartPos(elBtn) {
     changeStartPos(elBtn);
 }
 
-function onChangeStroke(color) {    
+function onChangeStroke(color) {
     changeTxtStroke(color);
     renderCanvas();
 }
 
-function onChangeFill(color) {    
+function onChangeFill(color) {
     changeTxtFill(color);
     renderCanvas();
 }
@@ -90,12 +88,12 @@ function onAlignLeft() {
     renderCanvas();
 }
 
-function onAlignCenter () {
+function onAlignCenter() {
     alignCenter();
     renderCanvas();
 }
 
-function onAlignRight () {
+function onAlignRight() {
     alignRight();
     renderCanvas();
 }
@@ -107,6 +105,6 @@ function onChangeFont(elFont) {
 
 function onDownload(elLink) {
     var canvas = document.querySelector("#my-canvas");
-    var img    = canvas.toDataURL("image/png");
+    var img = canvas.toDataURL("image/png");
     elLink.href = `${img}`
 }

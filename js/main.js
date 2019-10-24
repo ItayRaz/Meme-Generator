@@ -20,10 +20,6 @@ function changeCurrImg(id) {
 }
 
 function onHamburger() {
-    console.log('hello');
-    
     let elMainMenu = document.querySelector('.main-menu');
-    console.log(elMainMenu);
-    
     elMainMenu.classList.toggle('hide');
 }

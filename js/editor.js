@@ -65,6 +65,7 @@ function onChangePosY(elBtn) {
 }
 
 function onChangeStartPos(elBtn) {
+    document.querySelector('.text-input').value = '';
     changeStartPos(elBtn);
 }
 

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Gen</title>
+    <link rel="icon" href="./ICONS/cool.png">
 </head>
 
 <body onload="init ()">
@@ -15,13 +16,13 @@
     <header>
         <section class="header-wrapper container flex align-center">
             <div class="logo flex-1">
-            <img src="./meme-imgs/LOGO.png" alt="">
-        </div>
-        <div onclick="onHamburger()" class="hamburger">☰</div>
+                <a href="./index.html"><img src="./meme-imgs/LOGO.png" alt=""></a>
+            </div>
+            <div onclick="onHamburger()" class="hamburger">☰</div>
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu clean-list flex align-center">
                     <li>
-                        <a href="#" class="selected">Gallery</a>
+                        <a href="./index.html" class="selected">Gallery</a>
                     </li>
                     <li>
                         <a href="#">Memes </a>
@@ -36,6 +37,13 @@
 
         </section>
     </header>
+
+    <div class="serch-form flex">
+        <form onsubmit="onSrearch()">
+            <input type="text" placeholder="Try Happy/Cute/Funny" class="search">
+            <button type="submit"><img src="./ICONS/search-icon.png" class="search-btn"></button>
+        </form>
+    </div>
 
     <main>
         <div class="image-container container"></div>

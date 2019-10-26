@@ -23,3 +23,10 @@ function onHamburger() {
     let elMainMenu = document.querySelector('.main-menu');
     elMainMenu.classList.toggle('hide');
 }
+
+function onSrearch() {
+    event.preventDefault();
+    let keyWord = document.querySelector('.search').value.toLowerCase();
+    updateImageToShow(keyWord);
+    renderImgs();
+}

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Gen</title>
+    <link rel="icon" href="./ICONS/cool.png">
 </head>
 
 <body onload="initEditor()">
@@ -15,13 +16,13 @@
     <header>
         <section class="container header-wrapper flex align-center">
             <div class="logo flex-1">
-                <img src="./meme-imgs/LOGO.png" alt="">
+                <a href="./index.html"><img src="./meme-imgs/LOGO.png" alt=""></a>
             </div>
             <div onclick="onHamburger()" class="hamburger">☰</div>
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu hide clean-list flex align-center">
                     <li>
-                        <a href="./index.html" >Gallery</a>
+                        <a href="./index.html">Gallery</a>
                     </li>
                     <li>
                         <a href="#">Memes</a>
@@ -60,20 +61,20 @@
                 <button onclick="onAlignCenter()"><img src="./ICONS/center-text-alignment.png" alt=""></button>
                 <button onclick="onAlignRight()"><img src="./ICONS/align-to-right.png" alt=""></button>
                 <select class="font-select" onchange="onChangeFont(this.value)">
-                        <option value="Impact">Impact</option>
-                        <option value="Ariel">Ariel</option>
-                        <option value="Comic Sans MS">Comic Sans MS</option>
-                        <option value="Lucida Console">Lucida Console</option>
-                    </select>
-                    <label for="stroke"><img src="./ICONS/text stroke.png" alt=""></label>
-                    <input type="color" id="stroke" oninput="onChangeStroke(this.value)" style="display: none;">
-                    <label for="fill"><img src="./ICONS/fill-color.png" alt=""></label>
-                    <input type="color" id="fill" oninput="onChangeFill(this.value)" style="display: none;">
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                </select>
+                <label for="stroke"><img src="./ICONS/text stroke.png" alt=""></label>
+                <input type="color" id="stroke" oninput="onChangeStroke(this.value)" style="display: none;">
+                <label for="fill"><img src="./ICONS/fill-color.png" alt=""></label>
+                <input type="color" id="fill" oninput="onChangeFill(this.value)" style="display: none;">
             </div>
             <div class="sharing flex">
-               <a href="#" onclick="onDownload(this)" download="canvas">
-                        Download
-                    </a>
+                <a href="#" onclick="onDownload(this)" download="canvas">
+                    Download
+                </a>
                 <button class="flex">SHARE</button>
             </div>
         </div>

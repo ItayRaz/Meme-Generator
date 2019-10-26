@@ -4,6 +4,7 @@ let gCurrTxt = 0;
 let gNextId = 0;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 var gImgs = createImgs();
+let gImgToShow;
 var gMeme = {
     selectedImgId: 1,
     selectedTxtIdx: 0,
@@ -43,14 +44,28 @@ var gMeme = {
 
 function createImgs() {
     let imgs = []
-    for (var i = 1; i < 25; i++) {
-        imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keywords: ['happy'] })
+    for (var i = 1; i < 9; i++) {
+        imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keyword: 'happy' })
+    }
+    for (var i = 9; i < 17; i++) {
+        imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keyword: 'funny' })
+    }
+    for (var i = 17; i < 25; i++) {
+        imgs.push({ id: i, url: `./meme-imgs/${i}.jpg`, keyword: 'cute' })
     }
     return gImgs = imgs;
 }
 
+function updateImageToShow(keyWord) {
+    let imgToShow = gImgs.filter((image => {
+        return image.keyword === keyWord;
+    }))
+    gImgToShow = imgToShow;
+}
+
 function getImgs() {
-    return gImgs;
+    if (!gImgToShow) return gImgs;
+    return gImgToShow;;
 }
 
 function getMeme() {

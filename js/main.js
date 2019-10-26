@@ -7,6 +7,7 @@ function init() {
 function renderImgs() {
     let elImgContainer = document.querySelector('.image-container');
     let images = getImgs();
+    if (images.length === 0) return elImgContainer.innerText = 'No Images Found, Try Happy/Cute/Funny'
     let imgHTML = images.map((image) => {
         return `<img id="image-${image.id}" src="${image.url}" width="420" height="420" onclick="changeCurrImg(${image.id})">`
     })

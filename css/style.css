@@ -139,6 +139,7 @@ header .header-wrapper {
 
 .editor-container {
     margin-bottom: 20px;
+    margin-top: 20px;
     justify-content: space-around;
     flex-wrap: wrap;
 }

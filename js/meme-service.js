@@ -1,5 +1,7 @@
 'use strict'
 
+let gIsDraggingTxt = false;
+let gCurrDraggedTxt;
 let gCurrTxt = 0;
 let gNextId = 0;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
@@ -142,6 +144,54 @@ function changeStartPos(btn) {
         default:
             break;
     }
+}
+
+function canvasClicked(ev) {
+    let clickedTxt = gMeme.txts.find((txt) => {
+        return ev.clientX > txt.posX &&
+        ev.clientX < txt.posX + 400 &&
+        ev.clientY > txt.posY &&
+        ev.clientY < txt.posY + 80
+    });
+    
+
+    if (clickedTxt) {
+        gIsDraggingTxt = true;
+        gCurrDraggedTxt = clickedTxt;
+    }
+    else return;
+}
+
+function canvasTouch(ev) {
+    let clickedTxt = gMeme.txts.find((txt) => {
+        return ev.touches[0].clientX > txt.posX &&
+        ev.touches[0].clientX < txt.posX + 400 &&
+        ev.touches[0].clientY > txt.posY &&
+        ev.touches[0].clientY < txt.posY + 80
+    });
+    
+
+    if (clickedTxt) {
+        gIsDraggingTxt = true;
+        gCurrDraggedTxt = clickedTxt;
+    }
+    else return;
+}
+
+function dragTxt(ev) {
+    ev.preventDefault();
+    if (gIsDraggingTxt === false) return;
+    gCurrDraggedTxt.posX = ev.clientX - 60;
+    gCurrDraggedTxt.posY = ev.clientY - 60 ;
+
+    if (ev.type === 'touchmove') {
+        gCurrDraggedTxt.posX = ev.touches[0].clientX ;
+        gCurrDraggedTxt.posY = ev.touches[0].clientY ;
+    }
+}
+
+function toggleIsDragging() {
+    gIsDraggingTxt = false;
 }
 
 function changeTxtStroke(color) {

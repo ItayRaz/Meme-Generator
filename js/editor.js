@@ -109,3 +109,16 @@ function onDownload(elLink) {
     var img = canvas.toDataURL("image/png");
     elLink.href = `${img}`
 }
+
+function onCanvasClicked(ev) {
+    canvasClicked(ev);
+}
+
+function onCanvasTouch(ev) {
+    canvasTouch(ev)
+}
+
+function onDragTxt(ev) {
+    dragTxt(ev);
+    renderCanvas();
+}

@@ -14,33 +14,33 @@ var gMeme = {
     txts: [
         {
             line: '',
-            size: 50,
+            size: 30,
             font: 'Impact',
             align: 'center',
             color: 'white',
             stroke: 'black',
-            posX: 200,
-            posY: 60
+            posX: 150,
+            posY: 70
         },
         {
             line: '',
-            size: 50,
+            size: 30,
             font: 'Impact',
             align: 'center',
             color: 'white',
             stroke: 'black',
             posX: 200,
-            posY: 400
+            posY: 300
         },
         {
             line: '',
-            size: 50,
+            size: 30,
             font: 'Impact',
             align: 'center',
             color: 'white',
             stroke: 'black',
             posX: 200,
-            posY: 225
+            posY: 185
         },
     ]
 }
@@ -61,8 +61,10 @@ function createImgs() {
 
 function updateImageToShow(keyWord) {
     let imgToShow = gImgs.filter((image => {
-        return image.keyword === keyWord;
+        return image.keyword.includes(keyWord);
     }))
+    console.log(imgToShow);
+    
     gImgToShow = imgToShow;
 }
 
@@ -132,7 +134,7 @@ function changeStartPos(btn) {
         case 1:
             clearTimeout(timeOut);
             renderCanvas()
-            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            drawRect(0, gMeme.txts[gCurrTxt].posY - 70)
             timeOut = setTimeout(() => {
                 renderCanvas()
             }, 3000);
@@ -140,7 +142,7 @@ function changeStartPos(btn) {
         case 2:
             clearTimeout(timeOut);
             renderCanvas()
-            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            drawRect(0, gMeme.txts[gCurrTxt].posY - 70)
             timeOut = setTimeout(() => {
                 renderCanvas()
             }, 3000);
@@ -149,7 +151,7 @@ function changeStartPos(btn) {
             gCurrTxt = 0
             clearTimeout(timeOut);
             renderCanvas()
-            drawRect(10, gMeme.txts[gCurrTxt].posY - 70)
+            drawRect(0, gMeme.txts[gCurrTxt].posY - 70)
             timeOut = setTimeout(() => {
                 renderCanvas()
             }, 3000);
@@ -162,13 +164,13 @@ function changeStartPos(btn) {
 
 function canvasClicked(ev) {
     let clickedTxt = gMeme.txts.find((txt) => {
-        return ev.clientX > txt.posX &&
-            ev.clientX < txt.posX + 400 &&
-            ev.clientY > txt.posY &&
-            ev.clientY < txt.posY + 80
+        return ev.offsetX > txt.posX - 150 &&
+               ev.offsetX < txt.posX + 150 &&
+               ev.offsetY < txt.posY + 5 &&
+               ev.offsetY > txt.posY - 50
     });
-    console.log(clickedTxt)
 
+console.log(clickedTxt);
 
     if (clickedTxt) {
         gIsDraggingTxt = true;
@@ -178,11 +180,15 @@ function canvasClicked(ev) {
 }
 
 function canvasTouch(ev) {
+    let pos = {
+        x: ev.touches[0].clientX - ev.touches[0].target.offsetLeft,
+        y: ev.touches[0].clientY - ev.touches[0].target.offsetTop
+    }
     let clickedTxt = gMeme.txts.find((txt) => {
-        return ev.touches[0].clientX > txt.posX &&
-            ev.touches[0].clientX < txt.posX + 400 &&
-            ev.touches[0].clientY > txt.posY &&
-            ev.touches[0].clientY < txt.posY + 80
+        return pos.x > txt.posX - 150 &&
+            pos.x < txt.posX + 150 &&
+            pos.y < txt.posY + 5 &&
+            pos.y > txt.posY - 50
     });
 
 
@@ -196,12 +202,12 @@ function canvasTouch(ev) {
 function dragTxt(ev) {
     ev.preventDefault();
     if (gIsDraggingTxt === false) return;
-    gCurrDraggedTxt.posX = ev.clientX - 60;
-    gCurrDraggedTxt.posY = ev.clientY - 60;
+    gCurrDraggedTxt.posX = ev.offsetX;
+    gCurrDraggedTxt.posY = ev.offsetY;
 
     if (ev.type === 'touchmove') {
-        gCurrDraggedTxt.posX = ev.touches[0].clientX;
-        gCurrDraggedTxt.posY = ev.touches[0].clientY;
+        gCurrDraggedTxt.posX = ev.touches[0].clientX - ev.touches[0].target.offsetLeft;
+        gCurrDraggedTxt.posY = ev.touches[0].clientY - ev.touches[0].target.offsetTop;
     }
 }
 
@@ -227,11 +233,11 @@ function alignLeft() {
 }
 function alignCenter() {
     gMeme.txts[gCurrTxt].align = 'center'
-    gMeme.txts[gCurrTxt].posX = 200;
+    gMeme.txts[gCurrTxt].posX = 150;
 }
 function alignRight() {
     gMeme.txts[gCurrTxt].align = 'right'
-    gMeme.txts[gCurrTxt].posX = 400;
+    gMeme.txts[gCurrTxt].posX = 290;
 }
 
 function changeTxtFont(font) {

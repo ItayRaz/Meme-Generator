@@ -137,6 +137,11 @@ header .header-wrapper {
 
 /* Editor */
 
+.canvas-container {
+    /* width: 420px;
+    height: 420px; */
+}
+
 .editor-container {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -209,6 +214,7 @@ header .header-wrapper {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: 13px;
 }
 
 .sharing button:hover, .sharing a:hover {
@@ -347,14 +353,11 @@ i {
     }
 
     .container {
-        width: 88%;
+        width: 88%; 
+        /* margin: 0; */
     }
 
     .text-input {
         width: 329px;
-    }
-
-    canvas {
-        width: 98%;
     }
   }

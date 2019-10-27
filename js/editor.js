@@ -2,11 +2,15 @@
 
 let gCanvas;
 let gCtx;
+let gImg;
+
 
 function initEditor() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
     renderImg()
+    gImg = document.querySelector(".canvas-img");
+    resizeCanvas()
     setTimeout(() => {
         renderCanvas()
     }, 20);
@@ -17,15 +21,12 @@ function renderImg() {
     let meme = loadFromStorage('meme');
     let image = findImg(meme.selectedImgId);
     let imgHTML =
-        `<img id="image-${image.id}" class="canvas-img " src="${image.url}" width="420" height="420">`
+        `<img id="image-${image.id}" class="canvas-img " src="${image.url}">`
     elImg.innerHTML = imgHTML;
 }
 
 function renderCanvas() {
-    let img = document.querySelector(".canvas-img");
-    gCanvas.width = img.width;
-    gCanvas.height = img.height;
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+    gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
     let memeTxt = getMeme().txts;
     memeTxt.map(txt => {
         gCtx.textAlign = txt.align;
@@ -37,6 +38,15 @@ function renderCanvas() {
         gCtx.strokeText(txt.line, txt.posX, txt.posY)
     })
 }
+
+function resizeCanvas() {
+    let imgRatio = gImg.height / gImg.width;
+    var elContainer = document.querySelector('.canvas-container');
+    gCanvas.width = elContainer.offsetWidth;
+    gCanvas.height = gCanvas.width * imgRatio;
+    
+}
+
 
 function onChanginTxt(elInput) {
     changeMemeTxt(elInput.value);

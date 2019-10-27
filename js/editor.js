@@ -107,7 +107,7 @@ function onChangeFont(elFont) {
 function onDownload(elLink) {
     var canvas = document.querySelector("#my-canvas");
     var img = canvas.toDataURL("image/png");
-    elLink.href = `${img}`
+    elLink.href = `${img}`;
 }
 
 function onCanvasClicked(ev) {
@@ -121,4 +121,18 @@ function onCanvasTouch(ev) {
 function onDragTxt(ev) {
     dragTxt(ev);
     renderCanvas();
+}
+
+function onSave() {
+    var canvas = document.querySelector("#my-canvas");
+    var img = canvas.toDataURL("image/png");
+    
+    saveMeme(img);
+}
+
+function onMemesEditor() {
+    document.querySelector('.canvas-container').classList.add('hide');
+    document.querySelector('.settings-container').classList.add('hide');
+    renderSavedMemes ();
+    document.querySelector('.saved-memes-container').classList.remove('hide');
 }

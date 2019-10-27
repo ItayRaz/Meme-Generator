@@ -20,12 +20,12 @@
             </div>
             <div onclick="onHamburger()" class="hamburger">☰</div>
             <nav id="mainMenu" class="main-menu-wrapper">
-                <ul class="main-menu hide clean-list flex align-center">
+                <ul class="main-menu hide-hamburger clean-list flex align-center">
                     <li>
                         <a href="./index.html">Gallery</a>
                     </li>
                     <li>
-                        <a href="#">Memes</a>
+                        <a href="#" onclick="onMemesEditor()">Memes</a>
                     </li>
                     <li>
                         <a href="#">About</a>
@@ -55,8 +55,6 @@
                 <button onclick="onDecreaseFontSize()"><img src="./ICONS/decrease font - icon.png" alt=""></button>
                 <button onmousedown="onChangePosY(this)"><img src="./ICONS/arrow-up.png" alt=""></button>
                 <button onmousedown="onChangePosY(this)"><img src="./ICONS/arrow-down.png" alt=""></button>
-                <!-- <button onclick="onChangePosX(this)"><img style="transform: rotate(90deg);" src="./ICONS/arrow-up.png"alt=""></button>
-                <button onclick="onChangePosX(this)"><img style="transform: rotate(270deg);" src="./ICONS/arrow-up.png"alt=""></button> -->
                 <button onclick="onAlignLeft()"><img src="./ICONS/align-to-left.png" alt=""></button>
                 <button onclick="onAlignCenter()"><img src="./ICONS/center-text-alignment.png" alt=""></button>
                 <button onclick="onAlignRight()"><img src="./ICONS/align-to-right.png" alt=""></button>
@@ -75,9 +73,11 @@
                 <a href="#" onclick="onDownload(this)" download="canvas">
                     Download
                 </a>
-                <button class="flex">SHARE</button>
+                <button class="flex">Share</button>
+                <button class="flex" onclick="onSave()">Save</button>
             </div>
         </div>
+        <div class="saved-memes-container container hide"></div>
     </main>
     <div class="image" style="display: none;"></div>
 

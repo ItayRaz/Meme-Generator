@@ -41,21 +41,21 @@ header {
     background-color: #ff7f00;
 }
 
-.image-container {
+.image-container, .saved-memes-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: space-between;
     
 }
 
-.image-container img {
+.image-container img, .saved-memes-container img {
     margin-bottom: 20px;
     transition: 0.3s;
     width: 95%;
     height: 245px;
 }
 
-.image-container img:hover {
+.image-container img:hover, .saved-memes-container img:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
@@ -199,7 +199,7 @@ header .header-wrapper {
 }
 
 .sharing button, .sharing a {
-    width: 45%;
+    width: 32%;
     height: 60px;
     border-radius: 12px;
     background-color: gray;
@@ -288,18 +288,22 @@ i {
     flex: 1; 
   }
 
-  .hide {
+  .hide-hamburger {
       transform: scale(0);
   }
 
+  .hide {
+      display: none;
+  }
+
   @media(min-width: 1600px) {
-    .image-container img {
+    .image-container img, .saved-memes-container img {
         width: 330px;
     }
   }
 
   @media(max-width: 800px) {
-    .image-container {
+    .image-container, .saved-memes-container {
         grid-template-columns: 1fr 1fr 1fr;
     }
   }
@@ -333,11 +337,11 @@ i {
         font-weight: bold;
     }
 
-    .image-container {
+    .image-container, .saved-memes-container {
         grid-template-columns: 1fr 1fr;
     }
 
-    .image-container img {
+    .image-container img, .saved-memes-container img {
         width: 97%;
         height: 168px;
     }

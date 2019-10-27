@@ -7,6 +7,7 @@ let gNextId = 0;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 var gImgs = createImgs();
 let gImgToShow;
+let gSavedMemes;
 var gMeme = {
     selectedImgId: 1,
     selectedTxtIdx: 0,
@@ -63,6 +64,19 @@ function updateImageToShow(keyWord) {
         return image.keyword === keyWord;
     }))
     gImgToShow = imgToShow;
+}
+
+function getSavedMemes() {
+    let savedMemes = loadFromStorage('memes');
+    if (savedMemes) gSavedMemes = savedMemes; 
+    else gSavedMemes = [];
+    return gSavedMemes;
+}
+
+function saveMeme(img) {
+    getSavedMemes()
+    gSavedMemes.push(img)
+    saveToStorage('memes', gSavedMemes);
 }
 
 function getImgs() {
@@ -149,11 +163,12 @@ function changeStartPos(btn) {
 function canvasClicked(ev) {
     let clickedTxt = gMeme.txts.find((txt) => {
         return ev.clientX > txt.posX &&
-        ev.clientX < txt.posX + 400 &&
-        ev.clientY > txt.posY &&
-        ev.clientY < txt.posY + 80
+            ev.clientX < txt.posX + 400 &&
+            ev.clientY > txt.posY &&
+            ev.clientY < txt.posY + 80
     });
-    
+    console.log(clickedTxt)
+
 
     if (clickedTxt) {
         gIsDraggingTxt = true;
@@ -165,11 +180,11 @@ function canvasClicked(ev) {
 function canvasTouch(ev) {
     let clickedTxt = gMeme.txts.find((txt) => {
         return ev.touches[0].clientX > txt.posX &&
-        ev.touches[0].clientX < txt.posX + 400 &&
-        ev.touches[0].clientY > txt.posY &&
-        ev.touches[0].clientY < txt.posY + 80
+            ev.touches[0].clientX < txt.posX + 400 &&
+            ev.touches[0].clientY > txt.posY &&
+            ev.touches[0].clientY < txt.posY + 80
     });
-    
+
 
     if (clickedTxt) {
         gIsDraggingTxt = true;
@@ -182,11 +197,11 @@ function dragTxt(ev) {
     ev.preventDefault();
     if (gIsDraggingTxt === false) return;
     gCurrDraggedTxt.posX = ev.clientX - 60;
-    gCurrDraggedTxt.posY = ev.clientY - 60 ;
+    gCurrDraggedTxt.posY = ev.clientY - 60;
 
     if (ev.type === 'touchmove') {
-        gCurrDraggedTxt.posX = ev.touches[0].clientX ;
-        gCurrDraggedTxt.posY = ev.touches[0].clientY ;
+        gCurrDraggedTxt.posX = ev.touches[0].clientX;
+        gCurrDraggedTxt.posY = ev.touches[0].clientY;
     }
 }
 

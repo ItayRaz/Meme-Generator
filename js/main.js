@@ -4,6 +4,14 @@ function init() {
     renderImgs();
 }
 
+
+function onMemes() {
+    document.querySelector('.image-container').classList.add('hide');
+    renderSavedMemes ();
+    document.querySelector('.saved-memes-container').classList.remove('hide');
+}
+
+
 function renderImgs() {
     let elImgContainer = document.querySelector('.image-container');
     let images = getImgs();
@@ -14,6 +22,16 @@ function renderImgs() {
     elImgContainer.innerHTML = imgHTML.join('');
 }
 
+function renderSavedMemes () {
+    let savedMemesContainer = document.querySelector('.saved-memes-container');
+    let memes = getSavedMemes();
+    if (memes.length === 0) return savedMemesContainer.innerText = "No Saved Memes";
+    let memesHTML = memes.map((meme) => {
+        return `<img src="${meme}">`
+    })
+    savedMemesContainer.innerHTML = memesHTML.join('');
+}
+
 function changeCurrImg(id) {
     changeMemeImg(id);
     saveToStorage('meme', getMeme());
@@ -22,7 +40,7 @@ function changeCurrImg(id) {
 
 function onHamburger() {
     let elMainMenu = document.querySelector('.main-menu');
-    elMainMenu.classList.toggle('hide');
+    elMainMenu.classList.toggle('hide-hamburger');
 }
 
 function onSrearch() {

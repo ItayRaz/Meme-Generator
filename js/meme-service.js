@@ -29,8 +29,8 @@ var gMeme = {
             align: 'center',
             color: 'white',
             stroke: 'black',
-            posX: 200,
-            posY: 300
+            posX: 150,
+            posY: 280
         },
         {
             line: '',
@@ -39,8 +39,8 @@ var gMeme = {
             align: 'center',
             color: 'white',
             stroke: 'black',
-            posX: 200,
-            posY: 185
+            posX: 150,
+            posY: 175
         },
     ]
 }
